@@ -1,5 +1,19 @@
-.App {
+.app {
   background-color: #333533;
   color: #ffffff;
   min-height: 100vh;
+}
+
+.center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.gray-background {
+  background-color: #f5cb5c;
+}
+
+.tootie-image {
+  width: 15%;
 }
