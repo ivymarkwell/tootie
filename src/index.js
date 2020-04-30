@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
-import App from "./App";
-import About from "./About";
+import App from "./components/App";
+import About from "./components/About";
+import TicTacToe from "./components/TicTacToe";
 import "./index.css";
 
 // Importing the Bootstrap CSS
@@ -28,6 +29,7 @@ const routing = (
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/about" component={About} />
+        <Route path="/getting-started" component={TicTacToe} />
         <Route render={() => <h1>404: page not found</h1>} />
       </Switch>
     </div>

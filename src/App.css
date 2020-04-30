@@ -1,9 +1,3 @@
-.about {
-  margin-top: 20%;
-  max-width: 25%;
-  font-weight: bold;
-}
-
 .app {
   background-color: #333533;
   color: #ffffff;
@@ -11,6 +5,12 @@
 }
 
 .center {
+  margin-top: 20%;
+  max-width: 25%;
+  font-weight: bold;
+}
+
+.flex-column {
   align-items: center;
   display: flex;
   flex-direction: column;
