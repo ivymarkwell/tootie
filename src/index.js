@@ -5,6 +5,7 @@ import { Nav, Navbar } from "react-bootstrap";
 import App from "./components/App";
 import About from "./components/About";
 import TicTacToe from "./components/TicTacToe";
+
 import "./index.css";
 
 // Importing the Bootstrap CSS
@@ -13,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const routing = (
   <Router>
     <div className="app">
-      <Navbar className="gray-background">
+      <Navbar className="nav">
         <Navbar.Brand>
           <Link to="/" style={{ all: "unset", cursor: "pointer" }}>
             Tootie

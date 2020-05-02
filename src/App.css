@@ -1,7 +1,11 @@
 .app {
   background-color: #333533;
-  color: #ffffff;
   min-height: 100vh;
+}
+
+.bottom-area {
+  display: flex;
+  min-height: 78vh;
 }
 
 .center {
@@ -10,14 +14,28 @@
   font-weight: bold;
 }
 
+.code-editor {
+  width: 80%;
+}
+
 .flex-column {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-.gray-background {
+.instructions {
+  background-color: #333533 !important;
+  color: #ffffff;
+  min-height: 15vh;
+}
+
+.nav {
   background-color: #f5cb5c;
+}
+
+.sidebar {
+  width: 20%;
 }
 
 .tootie-image {
