@@ -1,3 +1,10 @@
+.about {
+  font-weight: bold;
+  margin-top: 20%;
+  max-width: 25%;
+  text-align: center;
+}
+
 .app {
   background-color: #333533;
   min-height: 100vh;
@@ -8,18 +15,13 @@
   min-height: 78vh;
 }
 
-.center {
-  margin-top: 20%;
-  max-width: 25%;
-  font-weight: bold;
-}
-
 .code-editor {
   width: 80%;
 }
 
 .flex-column {
   align-items: center;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
 }

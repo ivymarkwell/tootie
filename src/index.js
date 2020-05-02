@@ -22,8 +22,18 @@ const routing = (
         </Navbar.Brand>
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/getting-started">Getting Started</Nav.Link>
+            <Link
+              to="/about"
+              style={{ all: "unset", cursor: "pointer", paddingRight: "10px" }}
+            >
+              About
+            </Link>
+            <Link
+              to="/getting-started"
+              style={{ all: "unset", cursor: "pointer" }}
+            >
+              Getting Started
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -3,7 +3,7 @@ import React from "react";
 function About() {
   return (
     <div className="flex-column">
-      <p className="center">
+      <p className="about">
         One of the most important skills an engineer can have outside of
         understanding what something in the code does, is knowing how to
         navigate through an unfamiliar code base. Tootie takes a different
