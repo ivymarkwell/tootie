@@ -4,7 +4,7 @@ import "../App.css";
 
 function TicTacToe() {
   return (
-    <div>
+    <div style={{ height: "93%" }}>
       <Card className="instructions">
         <Card.Body>
           <Card.Title>Instructions</Card.Title>
