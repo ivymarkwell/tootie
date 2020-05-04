@@ -1,7 +1,8 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Dropdown } from "react-bootstrap";
 import "../App.css";
 
+// TODO: make custom dropdown component
 function TicTacToe() {
   return (
     <div style={{ height: "93%" }}>
@@ -14,8 +15,52 @@ function TicTacToe() {
       <div className="bottom-area">
         <Card className="sidebar">
           <Card.Body>
-            <Card.Title>Sidebar</Card.Title>
-            <Card.Text>Sidebar stuff</Card.Text>
+            <Card.Title>Files</Card.Title>
+            <Card.Text>
+              <Dropdown>
+                <Dropdown.Toggle
+                  style={{
+                    backgroundColor: "#ffffff",
+                    border: "none",
+                    color: "black",
+                    paddingBottom: 0,
+                    paddingLeft: 0
+                  }}
+                >
+                  public
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">favicon.ico</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">index.html</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">manifest.json</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Card.Text>
+            <Card.Text>
+              <Dropdown>
+                <Dropdown.Toggle
+                  style={{
+                    backgroundColor: "#ffffff",
+                    border: "none",
+                    color: "black",
+                    paddingBottom: 0,
+                    paddingLeft: 0
+                  }}
+                >
+                  src
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">index.css</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">index.js</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Card.Text>
+            <Card.Text>.gitignore</Card.Text>
+            <Card.Text>README.md</Card.Text>
+            <Card.Text>package-lock.json</Card.Text>
+            <Card.Text>package.json</Card.Text>
           </Card.Body>
         </Card>
         <Card className="code-editor">
