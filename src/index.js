@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
-import App from "./components/App";
-import About from "./components/About";
-import TicTacToe from "./components/TicTacToe";
+import App from "./components/templates/App";
+import About from "./components/templates/About";
+import TicTacToe from "./components/templates/TicTacToe";
 
 import "./index.css";
 

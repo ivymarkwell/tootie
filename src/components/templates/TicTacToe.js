@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, Dropdown } from "react-bootstrap";
-import "../App.css";
+import CustomMenu from "../materials/CustomMenu";
+import CustomToggle from "../materials/CustomToggle";
+import "../../App.css";
 
 // TODO: make custom dropdown component
 function TicTacToe() {
@@ -16,8 +18,8 @@ function TicTacToe() {
         <Card className="sidebar">
           <Card.Body>
             <Card.Title>Files</Card.Title>
-            <Card.Text>
-              <Dropdown>
+            <Card.Text id="public-folder">
+              <Dropdown as={CustomToggle}>
                 <Dropdown.Toggle
                   style={{
                     backgroundColor: "#ffffff",
@@ -30,11 +32,7 @@ function TicTacToe() {
                   public
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">favicon.ico</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">index.html</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">manifest.json</Dropdown.Item>
-                </Dropdown.Menu>
+                <Dropdown.Menu as={CustomMenu} />
               </Dropdown>
             </Card.Text>
             <Card.Text>
