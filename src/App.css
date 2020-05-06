@@ -10,6 +10,16 @@
   height: 100vh;
 }
 
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000000;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
 .bottom-area {
   display: flex;
   height: 87%;
