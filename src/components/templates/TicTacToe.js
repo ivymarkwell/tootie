@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Dropdown } from "react-bootstrap";
 import CustomMenu from "../materials/CustomMenu";
 import CustomToggle from "../materials/CustomToggle";
 import "../../App.css";
 
-// TODO: make custom dropdown component
 function TicTacToe() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div style={{ height: "93%" }}>
       <Card className="instructions">
@@ -18,8 +18,8 @@ function TicTacToe() {
         <Card className="sidebar">
           <Card.Body>
             <Card.Title>Files</Card.Title>
-            <Card.Text id="public-folder">
-              <Dropdown as={CustomToggle}>
+            <div id="public-folder" style={{ marginBottom: "16px" }}>
+              <Dropdown as={CustomToggle(menuOpen, setMenuOpen)}>
                 <Dropdown.Toggle
                   style={{
                     backgroundColor: "#ffffff",
@@ -32,10 +32,10 @@ function TicTacToe() {
                   public
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu as={CustomMenu} />
+                <Dropdown.Menu as={CustomMenu(menuOpen)} />
               </Dropdown>
-            </Card.Text>
-            <Card.Text>
+            </div>
+            <div id="public-src" style={{ marginBottom: "16px" }}>
               <Dropdown>
                 <Dropdown.Toggle
                   style={{
@@ -54,7 +54,7 @@ function TicTacToe() {
                   <Dropdown.Item href="#/action-2">index.js</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-            </Card.Text>
+            </div>
             <Card.Text>.gitignore</Card.Text>
             <Card.Text>README.md</Card.Text>
             <Card.Text>package-lock.json</Card.Text>
