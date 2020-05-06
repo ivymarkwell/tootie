@@ -5,7 +5,13 @@ import CustomToggle from "../materials/CustomToggle";
 import "../../App.css";
 
 function TicTacToe() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [publicFolderOpen, setPublicFolderOpen] = useState(false);
+  const [srcFolderOpen, setSrcFolderOpen] = useState(false);
+
+  const publicDiv =
+    "<div id='public-folder-files' style='margin-left: 20px;'><div>favicon.ico</div><div>index.html</div><div>manifest.json</div></div>";
+  const srcDiv =
+    "<div id='src-folder-files' style='margin-left: 20px;'><div>index.css</div><div>index.js</div></div>";
   return (
     <div style={{ height: "93%" }}>
       <Card className="instructions">
@@ -19,7 +25,13 @@ function TicTacToe() {
           <Card.Body>
             <Card.Title>Files</Card.Title>
             <div id="public-folder" style={{ marginBottom: "16px" }}>
-              <Dropdown as={CustomToggle(menuOpen, setMenuOpen)}>
+              <Dropdown
+                as={CustomToggle(
+                  "public-folder-files",
+                  publicFolderOpen,
+                  setPublicFolderOpen
+                )}
+              >
                 <Dropdown.Toggle
                   style={{
                     backgroundColor: "#ffffff",
@@ -32,11 +44,24 @@ function TicTacToe() {
                   public
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu as={CustomMenu(menuOpen)} />
+                <Dropdown.Menu
+                  as={CustomMenu(
+                    publicDiv,
+                    "public-folder-files",
+                    "public-folder",
+                    publicFolderOpen
+                  )}
+                />
               </Dropdown>
             </div>
-            <div id="public-src" style={{ marginBottom: "16px" }}>
-              <Dropdown>
+            <div id="src-folder" style={{ marginBottom: "16px" }}>
+              <Dropdown
+                as={CustomToggle(
+                  "src-folder-files",
+                  srcFolderOpen,
+                  setSrcFolderOpen
+                )}
+              >
                 <Dropdown.Toggle
                   style={{
                     backgroundColor: "#ffffff",
@@ -49,10 +74,14 @@ function TicTacToe() {
                   src
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">index.css</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">index.js</Dropdown.Item>
-                </Dropdown.Menu>
+                <Dropdown.Menu
+                  as={CustomMenu(
+                    srcDiv,
+                    "src-folder-files",
+                    "src-folder",
+                    srcFolderOpen
+                  )}
+                />
               </Dropdown>
             </div>
             <Card.Text>.gitignore</Card.Text>

@@ -2,15 +2,14 @@ import React from "react";
 
 // forwardRef again here!
 // Dropdown needs access to the DOM of the Menu to measure it
-const CustomMenu = (menuOpen) =>
+const CustomMenu = (div, elementId, insertElementId, menuOpen) =>
   React.forwardRef(
     ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
-      const div =
-        "<div id='public-files' style='margin-left: 20px;'><div>favicon.ico</div><div>index.html</div><div>manifest.json</div></div>";
-
-      const filesElement = document.getElementById("public-files");
+      console.log(elementId, "element id");
+      const filesElement = document.getElementById(elementId);
       if (menuOpen && !filesElement) {
-        const folderElement = document.getElementById("public-folder");
+        console.log("here");
+        const folderElement = document.getElementById(insertElementId);
         folderElement.insertAdjacentHTML("afterend", div);
       }
     }
