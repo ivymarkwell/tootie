@@ -22,56 +22,76 @@ function TicTacToe() {
               <ListGroup.Item
                 action
                 onClick={() => setPublicFolderOpen(!publicFolderOpen)}
-                style={{ all: "unset", display: "flex" }}
+                style={{ all: "unset", display: "flex", marginBottom: "16px" }}
               >
                 public <div className="arrow-down" />
               </ListGroup.Item>
               {publicFolderOpen && (
-                <>
+                <div style={{ marginLeft: "20px" }}>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     favicon.ico
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     index.html
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     manifest.json
                   </ListGroup.Item>
-                </>
+                </div>
               )}
             </ListGroup>
-            <ListGroup defaultActiveKey="#link1">
+            <ListGroup>
               <ListGroup.Item
                 action
                 onClick={() => setSrcFolderOpen(!srcFolderOpen)}
-                style={{ all: "unset", display: "flex" }}
+                style={{ all: "unset", display: "flex", marginBottom: "16px" }}
               >
                 src <div className="arrow-down" />
               </ListGroup.Item>
               {srcFolderOpen && (
-                <>
+                <div style={{ marginLeft: "20px" }}>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     index.css
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     index.js
                   </ListGroup.Item>
-                </>
+                </div>
               )}
             </ListGroup>
             <Card.Text>.gitignore</Card.Text>
