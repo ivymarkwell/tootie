@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Card, ListGroup } from "react-bootstrap";
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
 import "../../App.css";
+import { indexCss } from "../../files.js";
 
 function TicTacToe() {
   const [publicFolderOpen, setPublicFolderOpen] = useState(false);
   const [srcFolderOpen, setSrcFolderOpen] = useState(false);
+  const [code, setCode] = useState(indexCss);
 
   return (
     <div style={{ height: "93%" }}>
@@ -103,7 +109,17 @@ function TicTacToe() {
         <Card className="code-editor">
           <Card.Body>
             <Card.Title>Code</Card.Title>
-            <Card.Text>Code stuff</Card.Text>
+            <Editor
+              value={code}
+              onValueChange={(code) => setCode(code)}
+              highlight={(code) => highlight(code, languages.js)}
+              padding={10}
+              style={{
+                backgroundColor: "#d3d3d3",
+                fontFamily: '"Fira code", "Fira Mono", monospace',
+                fontSize: 12
+              }}
+            />
           </Card.Body>
         </Card>
       </div>

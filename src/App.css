@@ -27,6 +27,7 @@
 }
 
 .code-editor {
+  overflow: scroll;
   width: 80%;
 }
 
