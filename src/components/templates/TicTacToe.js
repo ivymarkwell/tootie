@@ -4,13 +4,16 @@ import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-css";
+import "prism-themes/themes/prism-vs.css";
 import "../../App.css";
-import { indexCss } from "../../files.js";
+import { gitignore, indexCss, indexJs } from "../../files.js";
 
 function TicTacToe() {
   const [publicFolderOpen, setPublicFolderOpen] = useState(false);
-  const [srcFolderOpen, setSrcFolderOpen] = useState(false);
-  const [code, setCode] = useState(indexCss);
+  const [srcFolderOpen, setSrcFolderOpen] = useState(true);
+  const [code, setCode] = useState(indexJs);
+  const [language, setLanguage] = useState(languages.js);
 
   return (
     <div style={{ height: "93%" }}>
@@ -79,6 +82,10 @@ function TicTacToe() {
                 <div style={{ marginLeft: "20px" }}>
                   <ListGroup.Item
                     action
+                    onClick={() => {
+                      setCode(indexCss);
+                      setLanguage(languages.css);
+                    }}
                     style={{
                       all: "unset",
                       display: "flex",
@@ -89,6 +96,10 @@ function TicTacToe() {
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
+                    onClick={() => {
+                      setCode(indexJs);
+                      setLanguage(languages.js);
+                    }}
                     style={{
                       all: "unset",
                       display: "flex",
@@ -100,7 +111,7 @@ function TicTacToe() {
                 </div>
               )}
             </ListGroup>
-            <Card.Text>.gitignore</Card.Text>
+            <Card.Text onClick={() => setCode(gitignore)}>.gitignore</Card.Text>
             <Card.Text>README.md</Card.Text>
             <Card.Text>package-lock.json</Card.Text>
             <Card.Text>package.json</Card.Text>
@@ -112,12 +123,13 @@ function TicTacToe() {
             <Editor
               value={code}
               onValueChange={(code) => setCode(code)}
-              highlight={(code) => highlight(code, languages.js)}
+              highlight={(code) => highlight(code, language)}
               padding={10}
               style={{
-                backgroundColor: "#d3d3d3",
+                backgroundColor: "white",
                 fontFamily: '"Fira code", "Fira Mono", monospace',
-                fontSize: 12
+                fontSize: 12,
+                minHeight: "95%"
               }}
             />
           </Card.Body>

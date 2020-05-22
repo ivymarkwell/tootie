@@ -27,6 +27,7 @@
 }
 
 .code-editor {
+  background-color: #cfdbd5 !important;
   overflow: scroll;
   width: 80%;
 }
@@ -50,6 +51,7 @@
 }
 
 .sidebar {
+  background-color: #cfdbd5 !important;
   width: 20%;
 }
 
