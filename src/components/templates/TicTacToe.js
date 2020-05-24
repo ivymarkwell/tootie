@@ -6,13 +6,18 @@ import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-css";
 import "prismjs/components/prism-markup";
+import "prismjs/components/prism-json";
 import "prism-themes/themes/prism-vs.css";
 import "../../App.css";
 import {
+  faviconIco,
   gitignore,
   indexCss,
   indexHTML,
   indexJs,
+  manifestJSON,
+  packageJSON,
+  packageLockJSON,
   readme
 } from "../../files.js";
 
@@ -46,6 +51,10 @@ function TicTacToe() {
                 <div style={{ marginLeft: "20px" }}>
                   <ListGroup.Item
                     action
+                    onClick={() => {
+                      setCode(faviconIco);
+                      setLanguage("");
+                    }}
                     style={{
                       all: "unset",
                       display: "flex",
@@ -70,6 +79,10 @@ function TicTacToe() {
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
+                    onClick={() => {
+                      setCode(manifestJSON);
+                      setLanguage(languages.json);
+                    }}
                     style={{
                       all: "unset",
                       display: "flex",
@@ -140,8 +153,24 @@ function TicTacToe() {
             >
               README.md
             </Card.Text>
-            <Card.Text>package-lock.json</Card.Text>
-            <Card.Text>package.json</Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(packageLockJSON);
+                setLanguage("");
+              }}
+            >
+              package-lock.json
+            </Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(packageJSON);
+                setLanguage(languages.json);
+              }}
+            >
+              package.json
+            </Card.Text>
           </Card.Body>
         </Card>
         <Card className="code-editor">

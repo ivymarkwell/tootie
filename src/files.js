@@ -279,3 +279,59 @@ export const indexHTML = `
   </body>
 </html>
 `;
+
+export const packageJSON = `
+{
+    "name": "tic-tac-toe",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "react": "^16.7.0",
+      "react-dom": "^16.7.0",
+      "react-scripts": "2.1.3"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+      "extends": "react-app"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ]
+  }
+`;
+
+export const packageLockJSON = `
+  Very large file with imported dependencies.
+  See: https://github.com/ivymarkwell/tic-tac-toe/blob/master/package-lock.json
+`;
+
+export const manifestJSON = `
+{
+    "short_name": "React App",
+    "name": "Create React App Sample",
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
+`;
+
+export const faviconIco = `
+React image.
+See: https://github.com/ivymarkwell/tic-tac-toe/blob/master/public/favicon.ico
+`;
