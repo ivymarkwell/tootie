@@ -5,9 +5,16 @@ import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-css";
+import "prismjs/components/prism-markup";
 import "prism-themes/themes/prism-vs.css";
 import "../../App.css";
-import { gitignore, indexCss, indexJs } from "../../files.js";
+import {
+  gitignore,
+  indexCss,
+  indexHTML,
+  indexJs,
+  readme
+} from "../../files.js";
 
 function TicTacToe() {
   const [publicFolderOpen, setPublicFolderOpen] = useState(false);
@@ -49,6 +56,10 @@ function TicTacToe() {
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
+                    onClick={() => {
+                      setCode(indexHTML);
+                      setLanguage(languages.html);
+                    }}
                     style={{
                       all: "unset",
                       display: "flex",
@@ -111,8 +122,24 @@ function TicTacToe() {
                 </div>
               )}
             </ListGroup>
-            <Card.Text onClick={() => setCode(gitignore)}>.gitignore</Card.Text>
-            <Card.Text>README.md</Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(gitignore);
+                setLanguage(languages.markup);
+              }}
+            >
+              .gitignore
+            </Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(readme);
+                setLanguage(languages.markup);
+              }}
+            >
+              README.md
+            </Card.Text>
             <Card.Text>package-lock.json</Card.Text>
             <Card.Text>package.json</Card.Text>
           </Card.Body>
