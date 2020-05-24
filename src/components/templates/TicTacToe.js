@@ -174,20 +174,22 @@ function TicTacToe() {
           </Card.Body>
         </Card>
         <Card className="code-editor">
-          <Card.Body>
+          <Card.Body style={{ paddingBottom: 0 }}>
             <Card.Title>Code</Card.Title>
-            <Editor
-              value={code}
-              onValueChange={(code) => setCode(code)}
-              highlight={(code) => highlight(code, language)}
-              padding={10}
-              style={{
-                backgroundColor: "white",
-                fontFamily: '"Fira code", "Fira Mono", monospace',
-                fontSize: 12,
-                minHeight: "95%"
-              }}
-            />
+            <Card.Text style={{ height: "95%", overflowY: "scroll" }}>
+              <Editor
+                value={code}
+                onValueChange={(code) => setCode(code)}
+                highlight={(code) => highlight(code, language)}
+                padding={10}
+                style={{
+                  backgroundColor: "white",
+                  fontFamily: '"Fira code", "Fira Mono", monospace',
+                  fontSize: 12,
+                  minHeight: "100%"
+                }}
+              />
+            </Card.Text>
           </Card.Body>
         </Card>
       </div>
