@@ -1,10 +1,31 @@
 import React, { useState } from "react";
 import { Card, ListGroup } from "react-bootstrap";
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-markup";
+import "prismjs/components/prism-json";
+import "prism-themes/themes/prism-vs.css";
 import "../../App.css";
+import {
+  faviconIco,
+  gitignore,
+  indexCss,
+  indexHTML,
+  indexJs,
+  manifestJSON,
+  packageJSON,
+  packageLockJSON,
+  readme
+} from "../../files.js";
 
 function TicTacToe() {
   const [publicFolderOpen, setPublicFolderOpen] = useState(false);
-  const [srcFolderOpen, setSrcFolderOpen] = useState(false);
+  const [srcFolderOpen, setSrcFolderOpen] = useState(true);
+  const [code, setCode] = useState(indexJs);
+  const [language, setLanguage] = useState(languages.js);
 
   return (
     <div style={{ height: "93%" }}>
@@ -22,68 +43,151 @@ function TicTacToe() {
               <ListGroup.Item
                 action
                 onClick={() => setPublicFolderOpen(!publicFolderOpen)}
-                style={{ all: "unset", display: "flex" }}
+                style={{ all: "unset", display: "flex", marginBottom: "16px" }}
               >
                 public <div className="arrow-down" />
               </ListGroup.Item>
               {publicFolderOpen && (
-                <>
+                <div style={{ marginLeft: "20px" }}>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    onClick={() => {
+                      setCode(faviconIco);
+                      setLanguage("");
+                    }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     favicon.ico
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    onClick={() => {
+                      setCode(indexHTML);
+                      setLanguage(languages.html);
+                    }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     index.html
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    onClick={() => {
+                      setCode(manifestJSON);
+                      setLanguage(languages.json);
+                    }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     manifest.json
                   </ListGroup.Item>
-                </>
+                </div>
               )}
             </ListGroup>
-            <ListGroup defaultActiveKey="#link1">
+            <ListGroup>
               <ListGroup.Item
                 action
                 onClick={() => setSrcFolderOpen(!srcFolderOpen)}
-                style={{ all: "unset", display: "flex" }}
+                style={{ all: "unset", display: "flex", marginBottom: "16px" }}
               >
                 src <div className="arrow-down" />
               </ListGroup.Item>
               {srcFolderOpen && (
-                <>
+                <div style={{ marginLeft: "20px" }}>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    onClick={() => {
+                      setCode(indexCss);
+                      setLanguage(languages.css);
+                    }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     index.css
                   </ListGroup.Item>
                   <ListGroup.Item
                     action
-                    style={{ all: "unset", display: "flex" }}
+                    onClick={() => {
+                      setCode(indexJs);
+                      setLanguage(languages.js);
+                    }}
+                    style={{
+                      all: "unset",
+                      display: "flex",
+                      marginBottom: "16px"
+                    }}
                   >
                     index.js
                   </ListGroup.Item>
-                </>
+                </div>
               )}
             </ListGroup>
-            <Card.Text>.gitignore</Card.Text>
-            <Card.Text>README.md</Card.Text>
-            <Card.Text>package-lock.json</Card.Text>
-            <Card.Text>package.json</Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(gitignore);
+                setLanguage(languages.markup);
+              }}
+            >
+              .gitignore
+            </Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(readme);
+                setLanguage(languages.markup);
+              }}
+            >
+              README.md
+            </Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(packageLockJSON);
+                setLanguage("");
+              }}
+            >
+              package-lock.json
+            </Card.Text>
+            <Card.Text
+              action
+              onClick={() => {
+                setCode(packageJSON);
+                setLanguage(languages.json);
+              }}
+            >
+              package.json
+            </Card.Text>
           </Card.Body>
         </Card>
         <Card className="code-editor">
           <Card.Body>
             <Card.Title>Code</Card.Title>
-            <Card.Text>Code stuff</Card.Text>
+            <Editor
+              value={code}
+              onValueChange={(code) => setCode(code)}
+              highlight={(code) => highlight(code, language)}
+              padding={10}
+              style={{
+                backgroundColor: "white",
+                fontFamily: '"Fira code", "Fira Mono", monospace',
+                fontSize: 12,
+                minHeight: "95%"
+              }}
+            />
           </Card.Body>
         </Card>
       </div>
