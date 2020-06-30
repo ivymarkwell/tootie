@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Button, Card, ListGroup } from "react-bootstrap";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
@@ -18,14 +18,19 @@ import {
   manifestJSON,
   packageJSON,
   packageLockJSON,
-  readme
+  readme,
 } from "../../files.js";
 
 function TicTacToe() {
-  const [publicFolderOpen, setPublicFolderOpen] = useState(false);
-  const [srcFolderOpen, setSrcFolderOpen] = useState(true);
   const [code, setCode] = useState(indexJs);
   const [language, setLanguage] = useState(languages.js);
+  const [publicFolderOpen, setPublicFolderOpen] = useState(false);
+  const [srcFolderOpen, setSrcFolderOpen] = useState(true);
+
+  // state of css, html and javascript code files
+  const [css, setCss] = useState(indexCss);
+  const [html, setHtml] = useState(indexHTML);
+  const [javascript, setJavascript] = useState(indexJs);
 
   return (
     <div style={{ height: "93%" }}>
@@ -58,7 +63,7 @@ function TicTacToe() {
                     style={{
                       all: "unset",
                       display: "flex",
-                      marginBottom: "16px"
+                      marginBottom: "16px",
                     }}
                   >
                     favicon.ico
@@ -72,7 +77,7 @@ function TicTacToe() {
                     style={{
                       all: "unset",
                       display: "flex",
-                      marginBottom: "16px"
+                      marginBottom: "16px",
                     }}
                   >
                     index.html
@@ -86,7 +91,7 @@ function TicTacToe() {
                     style={{
                       all: "unset",
                       display: "flex",
-                      marginBottom: "16px"
+                      marginBottom: "16px",
                     }}
                   >
                     manifest.json
@@ -113,7 +118,7 @@ function TicTacToe() {
                     style={{
                       all: "unset",
                       display: "flex",
-                      marginBottom: "16px"
+                      marginBottom: "16px",
                     }}
                   >
                     index.css
@@ -127,7 +132,7 @@ function TicTacToe() {
                     style={{
                       all: "unset",
                       display: "flex",
-                      marginBottom: "16px"
+                      marginBottom: "16px",
                     }}
                   >
                     index.js
@@ -175,23 +180,48 @@ function TicTacToe() {
         </Card>
         <Card className="code-editor">
           <Card.Body style={{ paddingBottom: 0 }}>
-            <Card.Title>Code</Card.Title>
+            <Card.Title>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>Code</span>
+                <Button
+                  onClick={
+                    () => {}
+                    // send post request to codesandbox to generate sandbox url
+                    // use embedded to render in app
+                  }
+                >
+                  Run the code!
+                </Button>
+              </div>
+            </Card.Title>
             <Card.Text style={{ height: "95%", overflowY: "scroll" }}>
               <Editor
                 value={code}
-                onValueChange={(code) => setCode(code)}
+                onValueChange={(code) => {
+                  if (language === languages.css) {
+                    setCss(code);
+                  }
+                  if (language === language.html) {
+                    setHtml(code);
+                  }
+                  if (language === languages.js) {
+                    setJavascript(code);
+                  }
+                  setCode(code);
+                }}
                 highlight={(code) => highlight(code, language)}
                 padding={10}
                 style={{
                   backgroundColor: "white",
                   fontFamily: '"Fira code", "Fira Mono", monospace',
                   fontSize: 12,
-                  minHeight: "100%"
+                  minHeight: "100%",
                 }}
               />
             </Card.Text>
           </Card.Body>
         </Card>
+        <Card id="executed-code" style={{ width: "40%" }} />
       </div>
     </div>
   );
