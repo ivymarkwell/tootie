@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
+import { getParameters } from "codesandbox/lib/api/define";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
@@ -31,6 +32,51 @@ function TicTacToe() {
   const [css, setCss] = useState(indexCss);
   const [html, setHtml] = useState(indexHTML);
   const [javascript, setJavascript] = useState(indexJs);
+  const [sandboxId, setSandboxId] = useState("");
+
+  // generate codesandbox from state
+  const parameters = getParameters({
+    files: {
+      "index.css": {
+        content: css,
+      },
+      "index.html": {
+        content: html,
+      },
+      "index.js": {
+        content: javascript,
+      },
+      "package.json": {
+        content: packageJSON,
+      },
+    },
+  });
+
+  const url = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&json=1`;
+  const sandboxUrl = `https://codesandbox.io/embed/${sandboxId}?codemirror=1&hidedevtools=1&hidenavigation=1&view=preview`;
+
+  const generateUrl = () => {
+    // GET request using fetch with error handling
+    fetch(url)
+      .then(async (response) => {
+        const data = await response.json();
+        setSandboxId(data.sandbox_id);
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response statusText
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  };
+
+  useEffect(() => {
+    generateUrl();
+  });
 
   return (
     <div style={{ height: "93%" }}>
@@ -184,11 +230,9 @@ function TicTacToe() {
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span>Code</span>
                 <Button
-                  onClick={
-                    () => {}
-                    // send post request to codesandbox to generate sandbox url
-                    // use embedded to render in app
-                  }
+                  onClick={() => {
+                    generateUrl();
+                  }}
                 >
                   Run the code!
                 </Button>
@@ -221,7 +265,20 @@ function TicTacToe() {
             </Card.Text>
           </Card.Body>
         </Card>
-        <Card id="executed-code" style={{ width: "40%" }} />
+        {!sandboxId ? (
+          <div
+            class="d-flex justify-content-center text-light"
+            style={{ alignItems: "center", height: "100%", width: "40%" }}
+          >
+            <div class="spinner-border" role="status" />
+          </div>
+        ) : (
+          <iframe
+            src={sandboxUrl}
+            style={{ height: "100%", width: "40%", overflow: "hidden" }}
+            title="Our code!"
+          ></iframe>
+        )}
       </div>
     </div>
   );

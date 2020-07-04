@@ -52,6 +52,10 @@ export const indexCss = `
 `;
 
 export const indexJs = `
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -192,7 +196,7 @@ class Game extends React.Component {
 
 // ========================================
 
-ReactDOM.render(<Game />, document.getElementById("executed-code"));
+ReactDOM.render(<Game />, document.getElementById("root"));
 `;
 
 export const gitignore = `
@@ -243,6 +247,7 @@ export const indexHTML = `
     <title>React App</title>
   </head>
   <body>
+    <div id="root"></div>
   </body>
 </html>
 `;
