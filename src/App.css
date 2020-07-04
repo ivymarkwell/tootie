@@ -22,7 +22,7 @@
 
 .bottom-area {
   display: flex;
-  height: 87%;
+  height: calc(87vh - 75px);
   width: 100%;
 }
 
@@ -41,12 +41,12 @@
 .instructions {
   background-color: #333533 !important;
   color: #ffffff;
-  height: 13%;
+  height: 13vh;
 }
 
 .nav {
   background-color: #f5cb5c;
-  height: 7%;
+  height: 75px;
 }
 
 .sidebar {

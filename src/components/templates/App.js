@@ -5,7 +5,7 @@ import tootie from "../../images/tootie.png";
 
 function App() {
   return (
-    <div className="flex-column">
+    <div className="app flex-column">
       <Image src={tootie} />
       <p>Tootie is learning to code through the file structure of an app!</p>
     </div>

@@ -32,7 +32,7 @@ function TicTacToe() {
   const [css, setCss] = useState(indexCss);
   const [html, setHtml] = useState(indexHTML);
   const [javascript, setJavascript] = useState(indexJs);
-  const [sandboxId, setSandboxId] = useState("");
+  const [sandboxId, setSandboxId] = useState(null);
 
   // generate codesandbox from state
   const parameters = getParameters({
@@ -53,7 +53,7 @@ function TicTacToe() {
   });
 
   const url = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&json=1`;
-  const sandboxUrl = `https://codesandbox.io/embed/${sandboxId}?codemirror=1&hidedevtools=1&hidenavigation=1&view=preview`;
+  const sandboxUrl = `https://codesandbox.io/embed/${sandboxId}?hidedevtools=1&hidenavigation=1&view=preview`;
 
   const generateUrl = () => {
     // GET request using fetch with error handling
@@ -75,11 +75,11 @@ function TicTacToe() {
   };
 
   useEffect(() => {
-    generateUrl();
+    !sandboxId && generateUrl();
   });
 
   return (
-    <div style={{ height: "93%" }}>
+    <>
       <Card className="instructions">
         <Card.Body>
           <Card.Title>Instructions</Card.Title>
@@ -238,7 +238,9 @@ function TicTacToe() {
                 </Button>
               </div>
             </Card.Title>
-            <Card.Text style={{ height: "95%", overflowY: "scroll" }}>
+            <Card.Text
+              style={{ height: "calc(87vh - 160px)", overflowY: "scroll" }}
+            >
               <Editor
                 value={code}
                 onValueChange={(code) => {
@@ -259,7 +261,6 @@ function TicTacToe() {
                   backgroundColor: "white",
                   fontFamily: '"Fira code", "Fira Mono", monospace',
                   fontSize: 12,
-                  minHeight: "100%",
                 }}
               />
             </Card.Text>
@@ -280,7 +281,7 @@ function TicTacToe() {
           ></iframe>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
