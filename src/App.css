@@ -16,8 +16,8 @@
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #000000;
-  margin-left: 5px;
-  margin-top: 10px;
+  margin-left: 8px;
+  margin-top: 11px;
 }
 
 .bottom-area {
@@ -31,11 +31,23 @@
   width: 50%;
 }
 
+.files {
+  background-color: #cfdbd5 !important;
+  border: none !important;
+}
+
 .flex-column {
   align-items: center;
   color: #ffffff;
   display: flex;
   flex-direction: column;
+}
+
+.folder {
+  background-color: #cfdbd5 !important;
+  border: none !important;
+  display: flex !important;
+  flex-direction: row;
 }
 
 .instructions {
@@ -45,15 +57,23 @@
 }
 
 .nav {
-  background-color: #f5cb5c;
+  background-color: #ffc857;
   height: 75px;
+}
+
+.selected {
+  background-color: lightsteelblue !important;
 }
 
 .sidebar {
   background-color: #cfdbd5 !important;
-  width: 10%;
+  width: 16%;
 }
 
 .tootie-image {
   width: 15%;
+}
+
+.underline {
+  text-decoration: underline;
 }

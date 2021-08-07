@@ -1,7 +1,7 @@
 import React from "react";
-import "../../App.css";
+import "../App.css";
 import { Image } from "react-bootstrap";
-import tootie from "../../images/tootie.png";
+import tootie from "../images/tootie.png";
 
 function App() {
   return (

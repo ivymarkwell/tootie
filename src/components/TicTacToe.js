@@ -9,7 +9,7 @@ import "prismjs/components/prism-css";
 import "prismjs/components/prism-markup";
 import "prismjs/components/prism-json";
 import "prism-themes/themes/prism-vs.css";
-import "../../App.css";
+import "../App.css";
 import {
   faviconIco,
   gitignore,
@@ -20,7 +20,7 @@ import {
   packageJSON,
   packageLockJSON,
   readme,
-} from "../../files.js";
+} from "../files.js";
 
 function TicTacToe() {
   const [code, setCode] = useState(indexJs);
@@ -89,139 +89,125 @@ function TicTacToe() {
       <div className="bottom-area">
         <Card className="sidebar">
           <Card.Body>
-            <Card.Title>Files</Card.Title>
-            <ListGroup defaultActiveKey="#link1">
-              <ListGroup.Item
-                action
-                onClick={() => setPublicFolderOpen(!publicFolderOpen)}
-                style={{ all: "unset", display: "flex", marginBottom: "16px" }}
-              >
-                public <div className="arrow-down" />
-              </ListGroup.Item>
-              {publicFolderOpen && (
-                <div style={{ marginLeft: "20px" }}>
-                  <ListGroup.Item
-                    action
-                    onClick={() => {
-                      setCode(faviconIco);
-                      setLanguage("");
-                    }}
-                    style={{
-                      all: "unset",
-                      display: "flex",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    favicon.ico
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    action
-                    onClick={() => {
-                      setCode(indexHTML);
-                      setLanguage(languages.html);
-                    }}
-                    style={{
-                      all: "unset",
-                      display: "flex",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    index.html
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    action
-                    onClick={() => {
-                      setCode(manifestJSON);
-                      setLanguage(languages.json);
-                    }}
-                    style={{
-                      all: "unset",
-                      display: "flex",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    manifest.json
-                  </ListGroup.Item>
-                </div>
-              )}
-            </ListGroup>
+            <Card.Title className="underline">Files</Card.Title>
             <ListGroup>
+              <ListGroup>
+                <ListGroup.Item
+                  action
+                  className="folder"
+                  onClick={() => setPublicFolderOpen(!publicFolderOpen)}
+                >
+                  public <div className="arrow-down" />
+                </ListGroup.Item>
+                {publicFolderOpen && (
+                  <div style={{ marginLeft: "20px" }}>
+                    <ListGroup.Item
+                      action
+                      className={"files " + (code === faviconIco ? "selected" : "")}
+                      onClick={() => {
+                        setCode(faviconIco);
+                        setLanguage("");
+                      }}
+                    >
+                      favicon.ico
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      className={"files " + (code === indexHTML ? "selected" : "")}
+                      onClick={() => {
+                        setCode(indexHTML);
+                        setLanguage(languages.html);
+                      }}
+                    >
+                      index.html
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      className={"files " + (code === manifestJSON ? "selected" : "")}
+                      onClick={() => {
+                        setCode(manifestJSON);
+                        setLanguage(languages.json);
+                      }}
+                    >
+                      manifest.json
+                    </ListGroup.Item>
+                  </div>
+                )}
+              </ListGroup>
+              <ListGroup>
+                <ListGroup.Item
+                  action
+                  className="folder"
+                  onClick={() => setSrcFolderOpen(!srcFolderOpen)}
+                >
+                  src <div className="arrow-down" />
+                </ListGroup.Item>
+                {srcFolderOpen && (
+                  <div style={{ marginLeft: "20px" }}>
+                    <ListGroup.Item
+                      action
+                      className={"files " + (code === indexCss ? "selected" : "")}
+                      onClick={() => {
+                        setCode(indexCss);
+                        setLanguage(languages.css);
+                      }}
+                    >
+                      index.css
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      className={"files " + (code === indexJs ? "selected" : "")}
+                      onClick={() => {
+                        setCode(indexJs);
+                        setLanguage(languages.js);
+                      }}
+                    >
+                      index.js
+                    </ListGroup.Item>
+                  </div>
+                )}
+              </ListGroup>
               <ListGroup.Item
                 action
-                onClick={() => setSrcFolderOpen(!srcFolderOpen)}
-                style={{ all: "unset", display: "flex", marginBottom: "16px" }}
+                className={"files " + (code === gitignore ? "selected" : "")}
+                onClick={() => {
+                  setCode(gitignore);
+                  setLanguage(languages.markup);
+                }}
               >
-                src <div className="arrow-down" />
+                .gitignore
               </ListGroup.Item>
-              {srcFolderOpen && (
-                <div style={{ marginLeft: "20px" }}>
-                  <ListGroup.Item
-                    action
-                    onClick={() => {
-                      setCode(indexCss);
-                      setLanguage(languages.css);
-                    }}
-                    style={{
-                      all: "unset",
-                      display: "flex",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    index.css
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    action
-                    onClick={() => {
-                      setCode(indexJs);
-                      setLanguage(languages.js);
-                    }}
-                    style={{
-                      all: "unset",
-                      display: "flex",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    index.js
-                  </ListGroup.Item>
-                </div>
-              )}
+              <ListGroup.Item
+                action
+                className={"files " + (code === readme ? "selected" : "")}
+                onClick={() => {
+                  setCode(readme);
+                  setLanguage(languages.markup);
+                }}
+              >
+                README.md
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className={"files " + (code === packageLockJSON ? "selected" : "")}
+                onClick={() => {
+                  setCode(packageLockJSON);
+                  setLanguage("");
+                }}
+              >
+                package-lock.json
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className={"files " + (code === packageJSON ? "selected" : "")}
+                onClick={() => {
+                  setCode(packageJSON);
+                  setLanguage(languages.json);
+                }}
+              >
+                package.json
+              </ListGroup.Item>
             </ListGroup>
-            <Card.Text
-              action
-              onClick={() => {
-                setCode(gitignore);
-                setLanguage(languages.markup);
-              }}
-            >
-              .gitignore
-            </Card.Text>
-            <Card.Text
-              action
-              onClick={() => {
-                setCode(readme);
-                setLanguage(languages.markup);
-              }}
-            >
-              README.md
-            </Card.Text>
-            <Card.Text
-              action
-              onClick={() => {
-                setCode(packageLockJSON);
-                setLanguage("");
-              }}
-            >
-              package-lock.json
-            </Card.Text>
-            <Card.Text
-              action
-              onClick={() => {
-                setCode(packageJSON);
-                setLanguage(languages.json);
-              }}
-            >
-              package.json
-            </Card.Text>
           </Card.Body>
         </Card>
         <Card className="code-editor">
